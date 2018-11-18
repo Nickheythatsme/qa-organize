@@ -11,6 +11,7 @@
     opacity: 0.8;
 }
 .platformIcon .noIcon {
+    font-size:.75em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +70,7 @@
     background-color: #fff;
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 5% auto 25% 25% 25%;
+    grid-template-columns: 25px auto 25% 25% 25%;
     grid-template-rows: auto auto auto auto auto auto auto 20px;
     padding:10px;
     border-top-style:solid;
