@@ -5,42 +5,41 @@ class Script extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      priority: props.priority
     };
   }
 
-  shortenText(text, maxLength) {
-    if (text.length < maxLength) {
-      return text;
-    }
-    return text.slice(0,maxLength - 3) + "...";
-  }
-
-  makeTitle(props) {
-    return (
-      <div className="PriorityTitle">
-        <h1>
-          {this.shortenText(this.props.title,26)}
-        </h1>
-      </div>
-    )
-  }
-
-  makeDescription() {
-    return <div className="ScriptDescription">
-    {this.shortenText(this.props.description, 185)}
-    </div>
-  }
+  /*
+    estimatedTime={estimatedTime} 
+    title={title} 
+    stepCount={stepCount} 
+    platform={platform}
+    devices={devices} 
+    completion={completion}
+  */
 
   render() {
     return (
-      <div className="Script">
-        {this.makeTitle()}
-        {this.makeDescription()}
-        <a>badge here</a>
+    <div className="Script">
+      <div className="title">
+      {this.props.title}
       </div>
+      <div className="length">
+      {this.props.stepCount},
+      {this.props.estimatedTime}
+      </div>
+      <div className="status">
+      {this.props.status}
+      </div>
+      <div className="devices">
+      {this.props.devices}
+      </div>
+      <div className="platform">
+      {this.props.platform}
+      </div>
+    </div>
     );
   }
+
 }
 
 export default Script;

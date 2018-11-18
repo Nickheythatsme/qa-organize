@@ -2,10 +2,6 @@
 $title: 'Roboto', sans-serif;
 $p: 'Roboto Condensed', sans-serif;
 
-$card_width: 250px;
-$card_height: 150px;
-
-
 /* RGB */
 $color1: rgba(138, 176, 171, 1);
 $color2: rgba(62, 80, 91, 1);
@@ -24,23 +20,16 @@ $color5: rgba(3, 18, 14, 1);
   font-family: $p;
 }
 
-.ScriptColumn {
-  width:$card_width + 18px;
+.ScriptList {
+  width:60%;
   height:100vh;
   padding: 9px;
-  background-color:$color2;
 }
 
-.ScriptColumn ul {
-  height: $card_height;
+.ScriptList ul {
   align-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
   width:100%;
-}
-
-.ScriptColumn li {
-  height: $card_height;
-  margin:0 0 10px 0;
 }

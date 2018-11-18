@@ -9,20 +9,14 @@
 .App p {
   font-family: "Roboto Condensed", sans-serif; }
 
-.ScriptColumn {
-  width: 268px;
+.ScriptList {
+  width: 60%;
   height: 100vh;
-  padding: 9px;
-  background-color: #3e505b; }
+  padding: 9px; }
 
-.ScriptColumn ul {
-  height: 150px;
+.ScriptList ul {
   align-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
   width: 100%; }
-
-.ScriptColumn li {
-  height: 150px;
-  margin: 0 0 10px 0; }
