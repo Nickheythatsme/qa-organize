@@ -7,9 +7,9 @@ function generateTestScript() {
     "Booking Verification Flow",
     "Identity Flow",
     "Report a comment tool",
-    "🎡 Create an Account",
-    "🗝 Filter redesign",
-    "🙏 Booking flow"
+    "Create an Account",
+    "Filter redesign",
+    "Booking flow"
   ];
 
   const Devices = {
@@ -26,7 +26,9 @@ function generateTestScript() {
     "chrome",
     "edge",
     "firefox",
-  ]
+    "iPad",
+    "Google Home Pod",
+  ];
 
   let randInt = function(max) {
     if (!max) {max = 100;}
@@ -68,15 +70,22 @@ function generateTestScript() {
 
 }
 
+function generateMultipleTestScript(count) {
+  if (!count) { count = 15; }
+  let scripts = [];
+  for (let i=0; i<count; ++i) {
+    scripts.push(generateTestScript());
+  }
+  return scripts;
+}
+
 class App extends Component {
   render() {
 
     return (
       <div className="App">
       <ul className="ScriptList">
-        {generateTestScript()}
-        {generateTestScript()}
-        {generateTestScript()}
+        {generateMultipleTestScript(15)}
       </ul>
       </div>
     );
