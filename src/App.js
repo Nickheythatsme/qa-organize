@@ -1,80 +1,14 @@
 import React, { Component } from 'react';
-import Script from './ScriptComponent/Script';
+import Script from './ScriptRow/Script';
+import ScriptData from './data/ScriptData.js';
 import './App.css';
 
-function generateTestScript() {
-  const Titles = [
-    "Booking Verification Flow",
-    "Identity Flow",
-    "Report a comment tool",
-    "Create an Account",
-    "Filter redesign",
-    "Booking flow"
-  ];
-
-  const Devices = {
-    'android':['Galaxy S7 Android 8.0','Pixel XL 2 Android 8.3','Nexus 5 Android 7.3','Pixel SIM 1932 Android 8.0'],
-    'ios':['iPhone 8 iOS 12.0','iPhone XR iOS 12.0.1','iPad 5th Gen LTE'],
-  }
-
-  const Platorms = [
-    "ios",
-    "android",
-    "accessibility",
-    "safari",
-    "web",
-    "chrome",
-    "edge",
-    "firefox",
-    "iPad",
-    "Google Home Pod",
-  ];
-
-  let randInt = function(max) {
-    if (!max) {max = 100;}
-    return Math.floor(Math.random() * max);
-  }
-
-  let chooseRandom = function(arr) {
-    return arr[randInt() % arr.length];
-  }
-
-  let status = randInt(100);
-  let estimatedTime = randInt(100);
-  let stepCount = randInt(10); 
-  let title = chooseRandom(Titles); 
-  let platform = chooseRandom(Platorms);
-  let devices = undefined;
-
-  let arrDevices = Devices[platform]
-  console.log(platform);
-  console.log(arrDevices);
-  if (arrDevices) {
-    devices = [];
-    for (let i=0; i<randInt(10); ++i) {
-      console.log(i);
-        devices.push(chooseRandom(arrDevices));
-    }
-  }
-
-  return (
-    <Script 
-      estimatedTime={estimatedTime} 
-      title={title} 
-      stepCount={stepCount} 
-      platform={platform}
-      devices={devices} 
-      status={status}
-      />
-  );
-
-}
-
-function generateMultipleTestScript(count) {
-  if (!count) { count = 15; }
+function generateScripts() {
   let scripts = [];
-  for (let i=0; i<count; ++i) {
-    scripts.push(generateTestScript());
+  for (let i=0; i<ScriptData.length; ++i) {
+    scripts.push(
+      <Script key={i} data={ScriptData[i]}/>
+    );
   }
   return scripts;
 }
@@ -85,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
       <ul className="ScriptList">
-        {generateMultipleTestScript(15)}
+        {generateScripts()}
       </ul>
       </div>
     );
