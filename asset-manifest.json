@@ -1,15 +1,15 @@
 {
-  "main.css": "/myapp/static/css/main.fd23e142.chunk.css",
-  "main.js": "/myapp/static/js/main.ea2ad519.chunk.js",
-  "main.js.map": "/myapp/static/js/main.ea2ad519.chunk.js.map",
-  "static/js/1.3ff5b7da.chunk.js": "/myapp/static/js/1.3ff5b7da.chunk.js",
-  "static/js/1.3ff5b7da.chunk.js.map": "/myapp/static/js/1.3ff5b7da.chunk.js.map",
-  "runtime~main.js": "/myapp/static/js/runtime~main.8dd91205.js",
-  "runtime~main.js.map": "/myapp/static/js/runtime~main.8dd91205.js.map",
-  "static/css/main.fd23e142.chunk.css.map": "/myapp/static/css/main.fd23e142.chunk.css.map",
-  "static/media/accessibility.png": "/myapp/static/media/accessibility.5b5c574f.png",
-  "static/media/android.png": "/myapp/static/media/android.b309ea14.png",
-  "index.html": "/myapp/index.html",
-  "precache-manifest.649514d83edf31c1c34d3b1b0e4bd104.js": "/myapp/precache-manifest.649514d83edf31c1c34d3b1b0e4bd104.js",
-  "service-worker.js": "/myapp/service-worker.js"
+  "main.css": "/qa-organize/static/css/main.fd23e142.chunk.css",
+  "main.js": "/qa-organize/static/js/main.06b6b296.chunk.js",
+  "main.js.map": "/qa-organize/static/js/main.06b6b296.chunk.js.map",
+  "static/js/1.3ff5b7da.chunk.js": "/qa-organize/static/js/1.3ff5b7da.chunk.js",
+  "static/js/1.3ff5b7da.chunk.js.map": "/qa-organize/static/js/1.3ff5b7da.chunk.js.map",
+  "runtime~main.js": "/qa-organize/static/js/runtime~main.37f524db.js",
+  "runtime~main.js.map": "/qa-organize/static/js/runtime~main.37f524db.js.map",
+  "static/css/main.fd23e142.chunk.css.map": "/qa-organize/static/css/main.fd23e142.chunk.css.map",
+  "static/media/accessibility.png": "/qa-organize/static/media/accessibility.5b5c574f.png",
+  "static/media/android.png": "/qa-organize/static/media/android.b309ea14.png",
+  "index.html": "/qa-organize/index.html",
+  "precache-manifest.621362bf38b845becd2650a2c3ea567f.js": "/qa-organize/precache-manifest.621362bf38b845becd2650a2c3ea567f.js",
+  "service-worker.js": "/qa-organize/service-worker.js"
 }
