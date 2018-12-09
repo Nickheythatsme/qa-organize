@@ -1,0 +1,12 @@
+<div class="container">
+  <div *ngFor="let headerItem of headerItems">
+    <!--
+    <a href="{{ headerItem.path }}" (click)="onClick(headerItem.id)">
+    !-->
+    <a (click)="onClick(headerItem.id)">
+      <span>
+        {{ headerItem.name }}
+      </span>
+    </a>
+  </div>
+</div>

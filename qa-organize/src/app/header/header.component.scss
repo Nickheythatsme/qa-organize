@@ -1,0 +1,25 @@
+@import "../../styles.scss";
+
+.container {
+    background-color:lighten($color: $background, $amount: 30);
+    height:5vh;
+    width:100vw;
+    display:grid;
+    grid-template-columns: auto auto auto auto
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    color:white;
+}
+span {
+    font-size:1.5em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}
