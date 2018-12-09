@@ -11,7 +11,11 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
+<<<<<<< HEAD
     "watch-scss": "node-sass-chokidar src/ -o src/ --watch --recursive",
+=======
+    "watch-css": "node-sass-chokidar src/ -o src/ --watch --recursive",
+>>>>>>> 1e58899629270cb24aa8b35832dd9e90075a4e37
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
