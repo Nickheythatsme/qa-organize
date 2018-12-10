@@ -1,14 +1,13 @@
-var { PORT, logger } = require('./config');
-var { ddb, s3 } = require('./db');
-var router = require('./src/router');
+const { PORT, logger } = require('./config');
+const { ddb, s3 } = require('./db');
+const router = require('./src/router');
+const path = require('path');
 
 var express = require('express');
 var app = express();
 
 // TODO Serve the web-app
-app.get('/', function (req, res) {
-    res.send('frontend');
-});
+app.use('/', express.static(path.join(__dirname, 'public/qa-organize')));
 
 // Log every interaction with server
 app.use((req, res, next) => {
