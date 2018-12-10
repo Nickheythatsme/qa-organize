@@ -1,14 +1,30 @@
-const http = require('http');
+var { PORT, logger } = require('./config');
+var { ddb, s3 } = require('./db');
+var router = require('./src/router');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+var express = require('express');
+var app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
+// TODO Serve the web-app
+app.get('/', function (req, res) {
+    res.send('frontend');
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+// Log every interaction with server
+app.use((req, res, next) => {
+    const message = {
+        topic: 'request made',
+        cookies: req.cookies,
+        ip: req.ip,
+        method: req.method,
+        params: req.params,
+        path: req.path,
+    }
+    logger.info(JSON.stringify(message));
+    next();
 });
+
+app.use('/api/v1',router);
+
+logger.info('listening at on port: ' + PORT);
+app.listen(PORT);

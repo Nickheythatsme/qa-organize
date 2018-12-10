@@ -1,7 +1,11 @@
 @import "../../styles.scss";
 
+$itemBackground: #801515;
+$itemSelected:#666666;
+
 .container {
-    background-color:lighten($color: $background, $amount: 30);
+    border-radius:5px;
+    overflow:hidden;
     height:5vh;
     width:100vw;
     display:grid;
@@ -16,10 +20,15 @@ a:visited {
     color:white;
 }
 span {
+    background-color:$itemBackground;
     font-size:1.5em;
     display:flex;
     align-items: center;
     justify-content: center;
     height:100%;
     width:100%;
+}
+
+.selected {
+    background-color:$itemSelected;
 }

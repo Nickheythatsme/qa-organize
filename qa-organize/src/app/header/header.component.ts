@@ -19,6 +19,13 @@ export class HeaderComponent implements OnInit {
 
   onClick(id: Number) {
     console.log('item clicked: ' + id);
+    this.headerItems.forEach(headerItem => {
+      if (id === headerItem.id) {
+        headerItem.selected = true;
+      } else {
+        headerItem.selected = false;
+      }
+    });
   }
 
   ngOnInit() {
