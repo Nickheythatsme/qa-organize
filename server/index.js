@@ -1,6 +1,6 @@
 const { PORT, logger } = require('./config');
 const { ddb, s3 } = require('./db');
-const router = require('./src/router');
+const api = require('./src/router');
 const path = require('path');
 
 var express = require('express');
@@ -23,7 +23,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/v1',router);
+// attach the api
+app.use('/api/v1', api);
 
 logger.info('listening at on port: ' + PORT);
 app.listen(PORT);
