@@ -28,12 +28,6 @@ var getTables = () => {
 }
 
 var tablesAtStart = getTables();
-tablesAtStart.then(data => {
-    logger.log({
-        level:'info', 
-        message:{tables_at_start:data.TableNames}
-    });
-})
 tablesAtStart.catch(err => {
     logger.error({location:'retrieving tables at start',error:err});
 });

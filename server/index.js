@@ -5,7 +5,6 @@ const path = require('path');
 var express = require('express');
 var app = express();
 
-// TODO Serve the web-app
 app.use('/', express.static(path.join(__dirname, 'public/qa-organize')));
 
 // Log every interaction with server
@@ -26,3 +25,4 @@ app.use('/api/v1', api);
 
 console.log('listening at on port: ' + PORT);
 app.listen(PORT);
+

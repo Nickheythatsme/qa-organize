@@ -73,7 +73,6 @@ var _delete = (req) => {
 }
 
 var get = (req) => {
-    // TODO validate
     const Keys = [];
     const ids = req.script_ids.split(',');
     for (let i=0; i<ids.length; ++i) {

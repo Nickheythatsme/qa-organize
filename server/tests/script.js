@@ -1,38 +1,26 @@
-const PORT = process.env.PORT;
-const { makeRequest } = require('./request');
+const request = require('supertest');
+const { logger } = require('../config');
 
-// test get script
-var getOptions = {
-    testName:'get script',
-    host:'127.0.0.1',
-    port: PORT,
-    timeout:1000, // timeout 1 second since it should be very fast
-    method:'GET',
-    path:'/api/v1/script?script_ids=test,test2&',
-}
+var getTest = (app) => {
+    const script_ids = 'test,cadc2a50-fc5b-11e8-a717-7fdfb1a25a47';
 
-// test create script
-var createData = JSON.stringify({
-    'scipt_id':'test2',
-    'instruction':'touch the button!',
-    'expected':'the button turns red'
-});
-
-var createOptions = {
-    testName:'create script',
-    hostname:'localhost',
-    port: PORT,
-    timeout:1000, // timeout 1 second since it should be very fast
-    method: 'PUT',
-    headers: {
-        'Content-Type':'application/x-www-form-urlencoded',
-        'Content-Length':Buffer.byteLength(createData)
-    },
-    path:'/api/v1/script/',
+    request(app)
+        .get('/api/v1/script?script_ids=' + script_ids)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end( (err, res) => {
+            logger.log({
+                level: err ? 'error': 'info',
+                message: {
+                    err: err || 'null',
+                    res: res
+                }
+            });
+        });
 }
 
 
 module.exports = [
-    () => makeRequest(getOptions),
-    () => makeRequest(createOptions, createData),
+    getTest
 ];
+
