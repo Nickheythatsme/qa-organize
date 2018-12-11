@@ -1,4 +1,4 @@
-const { tablesAtStart, ddb, s3 } = require('../../db');
+const { tablesAtStart, ddb, ddbDoc, s3 } = require('../../db');
 const { logger } = require('../../config');
 const { check, validationResult } = require('express-validator');
 const uuidv1 = require('uuid/v1');
@@ -29,6 +29,7 @@ var params = {
     }
 };
 
+// If the table already exists, don't try to make another
 tablesAtStart.then(data => {
     if (!data.TableNames) return;
     for (let i=0; i<data.TableNames.length; ++i) {
@@ -37,8 +38,11 @@ tablesAtStart.then(data => {
             return;
         }
     }
-})
+    logger.info({creating_table:script_table_name});
+    createTable();
+});
 
+// Make a new table
 function createTable() {
     ddb.createTable(params, function(err, data) {
         if (err) {
@@ -49,38 +53,19 @@ function createTable() {
     });
 }
 
+// Create a new script
 var create = (item) => {
-    return new Promise((resolve, reject) => {
-        ddb.updateItem({
-            TableName: script_table_name,
-            ExpressionAttributeNames: {
-                "#I":"instruction",
-                "#E":"expected"
-            },
-            Key: {
-                script_id: {
-                    S: uuidv1(),
-                }
-            },
-            ExpressionAttributeValues: {
-                ":i": {
-                    S: "Push the red button"
-                }, 
-                ":e": {
-                    S: "The screen changes to red"
-                }
-            },
-            UpdateExpression: "SET #I = :i, #E = :e",
-            ReturnValues: "ALL_NEW", 
-        }, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                logger.info({createdObject:data});
-                resolve(data);
-            }
-        });
-    }) 
+    var params = {
+        Item: {
+            script_id: (new uuidv1()).toString(),
+            expected: item.expected,
+            instruction: item.instruction,
+            outcome:item.outcome,
+        },
+        TableName: script_table_name,
+        ReturnValues:'ALL_OLD',
+    }
+    return ddbDoc.put(params).promise();
 }
 
 var _delete = (req) => {

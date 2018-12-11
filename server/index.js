@@ -1,5 +1,4 @@
 const { PORT, logger } = require('./config');
-const { ddb, s3 } = require('./db');
 const api = require('./src/router');
 const path = require('path');
 
@@ -12,19 +11,18 @@ app.use('/', express.static(path.join(__dirname, 'public/qa-organize')));
 // Log every interaction with server
 app.use((req, res, next) => {
     const message = {
-        topic: 'request made',
         cookies: req.cookies,
         ip: req.ip,
         method: req.method,
         params: req.params,
-        path: req.path,
+        path: req.baseUrl,
     }
-    logger.info(JSON.stringify(message));
+    logger.info(message);
     next();
 });
 
 // attach the api
 app.use('/api/v1', api);
 
-logger.info('listening at on port: ' + PORT);
+console.log('listening at on port: ' + PORT);
 app.listen(PORT);

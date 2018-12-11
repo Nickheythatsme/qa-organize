@@ -5,10 +5,6 @@ const app = require('express')();
 // TODO add validators: https://express-validator.github.io/docs/
 
 app.route('/')
-    .all((req,res,next) => {
-        logger.info({'script_request':{method:req.method, params:req.params, query:req.query}});
-        next();
-    })
     .get((req, res) => {
         scriptModel.get(req.query)
         .then(data => {
@@ -20,16 +16,28 @@ app.route('/')
             res.send('error: ' + err);
         });
     })
+
     .put((req, res) => {
-        res.send('not implemented yet!');
-    })
-    .post((req,res) => {
         scriptModel.create(req.query).then(data => {
+            logger.info({
+                label:'script',
+                message:{
+                    type: created,
+                    message:data
+                }
+            });
             res.json(data);
         }).catch(err => {
+
+            logger.error({method:'POST',message:err});
             res.send('error: ' + err);
         });
     })
+
+    .post((req,res) => {
+        res.send('not implemented yet!');
+    })
+
     .delete([], (req, res) => {
         res.send('not implemented yet!');
         scriptModel.delete(req.query);
